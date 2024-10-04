@@ -28,4 +28,4 @@ class FrontendDeveloper extends Developer {
     // Developer 클래스를 상속받는 FrontendDeveloper 클래스를 선언해주세요
     // 규칙 1. FrontendDeveloper 클래스에 'react'라는 이름의 새로운 필드를 선언해주세요.
     // (해당 필드의 접근 제어자는 protected, 타입은 boolean으로 설정)
-    // 규칙 2. 오류가 나지 않도록 constructor를 작성해주세요.(주의: super를 잊지 마세요!)
+    // 규칙 2. 오류가 나지 않도록 constructor를 작성해주세요. (주의: super를 잊지 마세요!)
