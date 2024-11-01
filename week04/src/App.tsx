@@ -4,7 +4,7 @@ import FriendListPage from './pages/FriendListPage';
 import { Route, Routes } from 'react-router-dom';
 import MyProfilePage from './pages/MyProfilePage';
 import NotYetPage from './pages/NotYetPage';
-import { RecoilRoot, atom, selector, useRecoilState, useRecoilValue } from 'recoil';
+import { RecoilRoot } from 'recoil';
 
 function App() {
   return (

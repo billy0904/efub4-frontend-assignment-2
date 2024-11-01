@@ -5,8 +5,9 @@ import { ReactComponent as ChatIcon } from "../../assets/ChatRoomList/chatting_i
 import { ReactComponent as OpenedChatIcon } from "../../assets/ChatRoomList/openedChat_icon.svg";
 import { ReactComponent as ShoppingIcon } from "../../assets/ChatRoomList/shopping_icon.svg";
 import { ReactComponent as MoreIcon } from "../../assets/ChatRoomList/more_icon.svg";
-import { useRecoilValue } from 'recoil';
-import { totalUnreadState } from '../../states/UnreadSelectors';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { totalUnreadState, calculateTotalUnread } from '../../states/UnreadAtoms';
+import { currentUserState } from '../../states/UserAtoms';
 
 const NavBar: React.FC = () => {
     const basicBtnStyle = "text-[9px] font-['Pretendard'] flex flex-col items-center cursor-pointer";
@@ -14,6 +15,15 @@ const NavBar: React.FC = () => {
     const location = useLocation();
     const [activePath, setActivePath] = useState(location.pathname);
     const totalUnread = useRecoilValue(totalUnreadState);
+
+    const setTotalUnread = useSetRecoilState(totalUnreadState);
+    const currentUser = useRecoilValue(currentUserState);
+
+    useEffect(() => {
+        // Navbar 로드 시 totalUnread 초기값 설정
+        const initialUnreadCount = calculateTotalUnread(currentUser);
+        setTotalUnread(initialUnreadCount);
+    }, [setTotalUnread, currentUser]);
 
     useEffect(() => {
         setActivePath(location.pathname);

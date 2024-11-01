@@ -9,7 +9,7 @@ import Line from '../components/common/Line';
 import ChatRoomComponent from '../components/ChatRoomListPage/ChatRoomComponent';
 import { UserData } from '../lib/UserData';
 import { currentUserState } from '../states/UserAtoms';
-import { totalUnreadState } from '../states/UnreadSelectors';
+import { totalUnreadState } from '../states/UnreadAtoms';
 import { unreadMessagesState } from '../states/UnreadAtoms';
 
 interface Message {
