@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import profileIcon from "../../assets/ChatRoom/profile.svg";
 import { formatTime } from '../../utils/ClockUtils';
-import { useUser } from '../../contexts/UserContext';
+import { currentUserState, opponentUserState } from '../../states/UserAtoms';
 import heartIcon from "../../assets/Reactions/heart.svg";
 import smileIcon from "../../assets/Reactions/smile.svg";
 import ohIcon from "../../assets/Reactions/oh.svg";
@@ -40,7 +41,8 @@ const groupMessages = (messages: Message[]) => {
 };
 
 const MessageList: React.FC<MessageListProps> = ({ messages }) => {
-    const { currentUser, opponentUser } = useUser();
+    const currentUser = useRecoilValue(currentUserState);
+    const opponentUser = useRecoilValue(opponentUserState);
     const scrollRef = useRef<HTMLDivElement>(null);
     const [reactions, setReactions] = useState<{ [key: number]: string | undefined }>({});
     const [showReactions, setShowReactions] = useState<number | null>(null);

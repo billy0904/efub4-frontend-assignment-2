@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { useRecoilValue, useRecoilState } from 'recoil';
 import ChatBar from '../components/ChatRoomPage/ChatBar';
 import Header from '../components/ChatRoomPage/Header';
 import HomeIndicator from '../components/common/HomeIndicatior';
@@ -7,7 +8,7 @@ import TopBar from '../components/common/TopBar';
 import MessageList from '../components/ChatRoomPage/MessageList';
 import { MessageData } from '../lib/MessageData';
 import { UserData } from '../lib/UserData';
-import { useUser } from '../contexts/UserContext';
+import { currentUserState } from '../states/UserAtoms';
 
 interface Message {
     senderId: number;
@@ -17,7 +18,7 @@ interface Message {
 
 const ChatRoomPage: React.FC = () => {
     const { chatKey } = useParams<{ chatKey: string }>();
-    const { currentUser } = useUser();
+    const currentUser = useRecoilValue(currentUserState);
     const [messages, setMessages] = useState<Message[]>([]);
 
     // chatKey에서 userId 추출

@@ -1,11 +1,14 @@
 import { useNavigate } from 'react-router-dom';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
 import profileIcon from "../../assets/MyProfile/my_profile.svg";
 import multiProfileIcon from "../../assets/MyProfile/multiProfile.svg";
-import { useUser } from '../../contexts/UserContext';
+import { currentUserState } from '../../states/UserAtoms';
+import { useToggleUser } from '../../states/UserActions';
 
 const UserProfile = () => {
     const navigate = useNavigate();
-    const { currentUser, toggleUser } = useUser();
+    const currentUser = useRecoilValue(currentUserState);
+    const toggleUser = useToggleUser();
 
     const handleProfileClick = () => {
         navigate('/my');

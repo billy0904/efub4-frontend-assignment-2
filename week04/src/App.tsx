@@ -4,13 +4,11 @@ import FriendListPage from './pages/FriendListPage';
 import { Route, Routes } from 'react-router-dom';
 import MyProfilePage from './pages/MyProfilePage';
 import NotYetPage from './pages/NotYetPage';
-import { UserProvider } from './contexts/UserContext';
-import { UnreadProvider } from './contexts/UnreadContext';
+import { RecoilRoot, atom, selector, useRecoilState, useRecoilValue } from 'recoil';
 
 function App() {
   return (
-    <UserProvider>
-      <UnreadProvider>
+    <RecoilRoot>
         <div className='flex items-center justify-center h-screen bg-Gray/2'>
           <div className='w-width h-height'>
             <Routes>
@@ -26,8 +24,7 @@ function App() {
             </Routes>
           </div>
         </div>
-      </UnreadProvider>
-    </UserProvider>
+      </RecoilRoot>
   );
 }
 

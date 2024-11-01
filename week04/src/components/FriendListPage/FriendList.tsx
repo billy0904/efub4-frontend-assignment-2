@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useRecoilValue } from 'recoil';
 import profileIcon from "../../assets/ChatRoom/profile.svg";
 import foldIcon from "../../assets/FriendList/up_arrow.svg";
 import unfoldIcon from "../../assets/FriendList/down_arrow.svg";
 import { UserData } from '../../lib/UserData';
-import { useUser } from '../../contexts/UserContext';
+import { currentUserState } from '../../states/UserAtoms';
 
 const FriendList: React.FC = () => {
     const [isFolded, setIsFolded] = useState(false);
     const navigate = useNavigate();
-    const { currentUser } = useUser();
+    const currentUser  = useRecoilValue(currentUserState);
 
     const toggleFold = () => {
         setIsFolded(!isFolded);

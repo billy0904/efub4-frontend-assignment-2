@@ -5,14 +5,15 @@ import { ReactComponent as ChatIcon } from "../../assets/ChatRoomList/chatting_i
 import { ReactComponent as OpenedChatIcon } from "../../assets/ChatRoomList/openedChat_icon.svg";
 import { ReactComponent as ShoppingIcon } from "../../assets/ChatRoomList/shopping_icon.svg";
 import { ReactComponent as MoreIcon } from "../../assets/ChatRoomList/more_icon.svg";
-import { useUnread } from '../../contexts/UnreadContext';
+import { useRecoilValue } from 'recoil';
+import { totalUnreadState } from '../../states/UnreadSelectors';
 
 const NavBar: React.FC = () => {
     const basicBtnStyle = "text-[9px] font-['Pretendard'] flex flex-col items-center cursor-pointer";
     const navigate = useNavigate();
     const location = useLocation();
     const [activePath, setActivePath] = useState(location.pathname);
-    const { totalUnread } = useUnread();
+    const totalUnread = useRecoilValue(totalUnreadState);
 
     useEffect(() => {
         setActivePath(location.pathname);

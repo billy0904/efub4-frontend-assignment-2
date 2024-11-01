@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useRecoilValue } from 'recoil';
 import HomeIndicator from '../components/common/HomeIndicatior';
 import TopBar from '../components/common/TopBar';
 import NavBar from '../components/common/NavBar';
@@ -6,10 +7,10 @@ import Header from '../components/MyProfilePage/Header';
 import UserProfile from '../components/MyProfilePage/UserProfile';
 import Line from '../components/common/Line';
 import ProfileInfo from '../components/MyProfilePage/ProfileInfo';
-import { useUser } from '../contexts/UserContext';
+import { currentUserState } from '../states/UserAtoms';
 
 const MyProfilePage = () => {
-    const { currentUser } = useUser();
+    const currentUser = useRecoilValue(currentUserState);
 
     return (
         <div className='w-width h-height bg-White relative'>
